@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 // 1. Connection
 mongoose
-  .connect("mongodb://localhost/model")
+  // .connect("mongodb://localhost/model")
+  .connect("mongodb+srv://elis:elis@cluster0.eoohx.mongodb.net/model?retryWrites=true&w=majority")
 
   .then(() => {
     console.log("DB connection established!");
@@ -29,9 +30,9 @@ const Student = model("Student", studentSchema); // convert "Student" => student
 
 const addStudent = async () => {
   const studentCreated = await Student.create({
-    name: "Gael",
-    city: "London",
-    age: 27
+    name: "Robert",
+    city: "Berlin",
+    age: 31
   });
   console.log(studentCreated);
 };
