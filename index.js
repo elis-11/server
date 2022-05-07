@@ -15,8 +15,8 @@ mongoose
 // 2. Schema => rules for an ITEM
 const { Schema, model } = mongoose;
 
-// STUDENT schema (= student ruules)
-const studentSchema = new Schema({
+// TEACHER schema (= teacher ruules)
+const teacherSchema = new Schema({
   //   name: String,
   //   city: String,
   name: { type: String, required: true },
@@ -26,14 +26,14 @@ const studentSchema = new Schema({
 
 // 3. Model => create MANAGER to manage items in DATABASE
 // Model will take over all communication with the database for this ITEM
-const Student = model("Student", studentSchema); // convert "Student" => students
+const Teacher = model("Teacher", teacherSchema); // convert "teacher" => teachers
 
-const addStudent = async () => {
-  const studentCreated = await Student.create({
-    name: "Robert",
+const addteacher = async () => {
+  const teacherCreated = await Teacher.create({
+    name: "Rene",
     city: "Berlin",
-    age: 31
+    age: 37
   });
-  console.log(studentCreated);
+  console.log(teacherCreated);
 };
-addStudent();
+addteacher();
