@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Gael",
+        "hobby": "playing computer games",
+        "email": "gael@gmail.com",
+        "city": "Berlin"
+    },
+    {
+        "name": "Robert",
+        "hobby": "reading",
+        "email": "robert@gmail.com",
+        "city": "Berlin"
+    },
+    {
+        "name": "Elisa",
+        "hobby": "JavaScript",
+        "email": "elisa@gmail.com",
+        "city": "Hamburg"
+    }
+]

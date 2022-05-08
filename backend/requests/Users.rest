@@ -1,0 +1,57 @@
+@url=http://localhost:5001
+
+### get all users
+GET {{url}}/users
+Content-Type: application/json
+
+### get single
+GET {{url}}/users/6277ac789bcf31182e32506b
+Content-Type: application/json
+
+### create
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "name": "Julian",
+    "profession": "PR Consultant",
+    "hobby": "reading",
+    "email": "julian@gmail.com",
+    "city": "San Francisco"
+}
+
+### delete
+DELETE {{url}}/users/6277f6ee2b9adb644dd66651
+Content-Type: application/json
+
+### update
+PATCH {{url}}/users/6277f42736cfc146662aa04f
+Content-Type: application/json
+
+{
+    "name": "Tomas",
+    "profession": "Web Developer",
+    "hobby": "coding",
+    "email": "tomas@gmail.com",
+    "city": "San Francisco"
+}
+### update
+PATCH {{url}}/users/6277f42536cfc146662aa04b
+Content-Type: application/json
+
+{
+    "name": "Luisa",
+    "profession": "Trainer",
+    "email": "luisa@gmail.com",
+    "city": "New York"
+}
+### update
+PATCH {{url}}/users/6277f42636cfc146662aa04d
+Content-Type: application/json
+
+{
+    "name": "Olaf",
+    "email": "olaf@gmail.com",
+    "city": "Berlin"
+}
+
