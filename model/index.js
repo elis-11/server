@@ -30,7 +30,7 @@ const Teacher = model("Teacher", teacherSchema); // convert "teacher" => teacher
 
 const addteacher = async () => {
   const teacherCreated = await Teacher.create({
-    name: "Rene",
+    name: "Luis",
     city: "Berlin",
     age: 37
   });
