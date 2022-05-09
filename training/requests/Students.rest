@@ -1,0 +1,44 @@
+@url=http://localhost:5002
+
+### get all students
+GET {{url}}/students
+Content-Type: application/json
+
+### get single student
+GET {{url}}/students/6278cc415d41b73704926bfb
+Content-Type: application/json
+
+### create new student
+POST {{url}}/students
+Content-Type: application/json
+
+{
+    "name": "Julian",
+    "hobby": "reading",
+    "email": "julian@gmail.com",
+    "city": "San Francisco"
+}
+
+### delete student
+DELETE {{url}}/students/6278d731e45c8f117fc46f8b
+Content-Type: application/json
+
+### create new student
+PATCH {{url}}/students/6278d738e45c8f117fc46f90
+Content-Type: application/json
+
+{
+    "name": "Hakim",
+    "hobby": "reading",
+    "email": "hakim@gmail.com",
+    "city": "New York"
+}
+### create new student
+PATCH {{url}}/students/6278d73ae45c8f117fc46f94
+Content-Type: application/json
+
+{
+    "name": "Igor",
+    "email": "igor@gmail.com",
+    "city": "Hamburg"
+}

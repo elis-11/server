@@ -1,5 +1,6 @@
 const express = require("express");
-
+const connection= require("./connect-db")
+const studentsRouter= require("./routes/students.Router")
 
 
 const app = express();
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
     res.send(`<a href='/students'>Students</a>`)
 })
 
+app.use("/students", studentsRouter)
 
 app.use((req, res) => {
     res.status(404).json({
@@ -21,4 +23,5 @@ const PORT= 5002
 
 app.listen(PORT, ()=> {
     console.log(`Listen on http://localhost:${PORT}`);
+
 })
