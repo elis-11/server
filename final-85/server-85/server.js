@@ -15,8 +15,7 @@ app.get("/", (req, res) => {
   //   res.json(`<h2>Hi</h2>
   res.send(`<h2>Final</h2>
   <a href="/users">Users</a> |
-  <a href="/teachers">Teachers</a> |
-  <a href="/students">Students</a>
+  <a href="/teachers">Teachers</a> 
     `);
 });
 
@@ -34,7 +33,7 @@ app.use((req, res) => {
 
 // STARTUP API and listen for incoming requests on PORT 5000
 // const PORT = process.env.PORT || 5000;
-const PORT = 5008;
+const PORT = 5085;
 
 app.listen(PORT, () => {
   console.log(`Listen on http://localhost:${PORT}`);
