@@ -1,8 +1,23 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const Context = createContext();
 
 export const DataProvider = (props) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      // Load users
+      let response = await fetch(`${process.env.REACT_APP_API_URL}/users`);
+      const usersApi = await response.json();
+      setUsers(usersApi);
+
+      // Load teachers
+      response = await fetch(`${process.env.REACT_APP_API_URL}/teachers`);
+      const teachersApi = await response.json();
+      setTeachers(teachersApi);
+    };
+    fetchData();
+  }, []);
+
   const [users, setUsers] = useState([
     {
       _id: "1",
@@ -12,7 +27,7 @@ export const DataProvider = (props) => {
       email: "gael@gmail.com",
       city: "Berlin",
     },
-    { 
+    {
       _id: "2",
       name: "Robert",
       profession: "Web Dev Trainer",
@@ -44,21 +59,56 @@ export const DataProvider = (props) => {
     { _id: "4", name: "Elisa", specialization: "Frontend" },
     { _id: "5", name: "Stephan", specialization: "Full Stack" },
   ]);
-  const addTeacher = (teacherNew) => {
-    const addNewTeacher = {
-      id: Date.now().toString(),
-      ...teacherNew,
-    };
-    setTeachers([...teachers, addNewTeacher]);
+
+  // Add API FIRST!
+
+  const addTeacher = async (teacherNew) => {
+    console.log(teacherNew);
+ 
+    //add teacher at API
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/teachers`, {
+      method: "POST",
+      body: JSON.stringify(teacherNew),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const teacherNewApi = await response.json();
+    console.log(teacherNewApi);
+
+    setTeachers([...teachers, teacherNewApi]);
+
+    // const addNewTeacher = {
+    //   _id: Date.now().toString(),
+    //   ...teacherNew,
+    // };
+    // setTeachers([...teachers, addNewTeacher]);
   };
 
-  const editTeacher = (id, teacherData) => {
+  const editTeacher = async (id, teacherData) => {
+
+    //update teacher at API
+    await fetch(`${process.env.REACT_APP_API_URL}/teachers/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(teacherData),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    //update teacher at FRONTEND STATE
     const updateTeacher = teachers.map((teacher) =>
       teacher._id === id ? { ...teacher, ...teacherData } : teacher
     );
     setTeachers(updateTeacher);
   };
-  const deleteTeacher = (id) => {
+
+  const deleteTeacher = async (id) => {
+
+    //delete teacher at API
+    await fetch(`${process.env.REACT_APP_API_URL}/teachers/${id}`, {
+      method: "DELETE",
+    });
+
+    //delete teacher at FRONTEND STATE
     const deleteTeacher = teachers.filter((teacher) => teacher._id !== id);
     setTeachers(deleteTeacher);
   };

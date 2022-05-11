@@ -1,4 +1,8 @@
+const dotenv= require("dotenv")
+dotenv.config()
+
 const express = require("express");
+const cors = require("cors");
 const connection = require("./connect-db");
 const usersRouter = require("./routes/users.router");
 const teachersRouter = require("./routes/teachers.router");
@@ -7,6 +11,8 @@ const studentsRouter = require("./routes/students.router");
 const app = express();
 
 app.use(express.json());
+
+app.use(cors({origin: process.env.FRONTEND_ORIGIN }))
 
 //HOME ROUTE
 app.get("/", (req, res) => {
