@@ -32,7 +32,12 @@ export const Teachers = () => {
   // RENDERING of data into HTML
   return (
     <div className="Teachers">
-      <h2>Teachers</h2>
+      {/* <h2>Teachers</h2> */}
+      <h2>
+        {filteredTeachers.length} List{" "}
+        {filteredTeachers.length === 1 ? "Teacher" : "Teachers"}
+      </h2>
+
       <div className="container">
         <AddForm />
         <div className="filter">
@@ -67,17 +72,14 @@ export const Teachers = () => {
             />
           </label>
         </div>
-        <TeachersList
-          teachers={teachers}
-          filteredTeachers={filteredTeachers}
-        />
+        <TeachersList teachers={teachers} filteredTeachers={filteredTeachers} />
       </div>
-      <footer>
-        <h2>
+      {/* <footer> */}
+      {/* <h2>
           {filteredTeachers.length} List{" "}
           {filteredTeachers.length === 1 ? "Teacher" : "Teachers"}
-        </h2>
-      </footer>
+        </h2> */}
+      {/* </footer> */}
     </div>
   );
 };
