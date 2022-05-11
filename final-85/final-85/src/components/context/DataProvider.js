@@ -5,7 +5,7 @@ export const Context = createContext();
 export const DataProvider = (props) => {
   const [users, setUsers] = useState([
     {
-      id: "1",
+      _id: "1",
       name: "Gael",
       profession: "Web Dev Consultant",
       hobby: "playing computer games",
@@ -13,7 +13,7 @@ export const DataProvider = (props) => {
       city: "Berlin",
     },
     { 
-      id: "2",
+      _id: "2",
       name: "Robert",
       profession: "Web Dev Trainer",
       hobby: "reading",
@@ -21,7 +21,7 @@ export const DataProvider = (props) => {
       city: "Berlin",
     },
     {
-      id: "3",
+      _id: "3",
       name: "Elisa",
       profession: "JavaScript Engineer",
       hobby: "JavaScript",
@@ -30,19 +30,19 @@ export const DataProvider = (props) => {
     },
   ]);
   const [teachers, setTeachers] = useState([
-    { id: "1", name: "Robert", city: "Berlin" },
-    { id: "2", name: "Marlene", city: "Hamburg" },
-    { id: "3", name: "Olaf", city: "Hamburg" },
-    { id: "4", name: "Julian", city: "Berlin" },
-    { id: "5", name: "Heiko", city: "Hamburg" },
-    { id: "6", name: "Gael", city: "Berlin" },
+    { _id: "1", name: "Robert", city: "Berlin" },
+    { _id: "2", name: "Marlene", city: "Hamburg" },
+    { _id: "3", name: "Olaf", city: "Hamburg" },
+    { _id: "4", name: "Julian", city: "Berlin" },
+    { _id: "5", name: "Heiko", city: "Hamburg" },
+    { _id: "6", name: "Gael", city: "Berlin" },
   ]);
   const [students, setStudents] = useState([
-    { id: "1", name: "Niko", specialization: "Full Stack" },
-    { id: "2", name: "Heba", specialization: "Full Stack" },
-    { id: "3", name: "Osama", specialization: "Backend" },
-    { id: "4", name: "Elisa", specialization: "Frontend" },
-    { id: "5", name: "Stephan", specialization: "Full Stack" },
+    { _id: "1", name: "Niko", specialization: "Full Stack" },
+    { _id: "2", name: "Heba", specialization: "Full Stack" },
+    { _id: "3", name: "Osama", specialization: "Backend" },
+    { _id: "4", name: "Elisa", specialization: "Frontend" },
+    { _id: "5", name: "Stephan", specialization: "Full Stack" },
   ]);
   const addTeacher = (teacherNew) => {
     const addNewTeacher = {
@@ -54,12 +54,12 @@ export const DataProvider = (props) => {
 
   const editTeacher = (id, teacherData) => {
     const updateTeacher = teachers.map((teacher) =>
-      teacher.id === id ? { ...teacher, ...teacherData } : teacher
+      teacher._id === id ? { ...teacher, ...teacherData } : teacher
     );
     setTeachers(updateTeacher);
   };
   const deleteTeacher = (id) => {
-    const deleteTeacher = teachers.filter((teacher) => teacher.id !== id);
+    const deleteTeacher = teachers.filter((teacher) => teacher._id !== id);
     setTeachers(deleteTeacher);
   };
 

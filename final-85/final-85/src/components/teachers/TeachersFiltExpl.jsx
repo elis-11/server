@@ -7,10 +7,10 @@ export const Teachers = () => {
   const [cityFilter, setCityFilter] = useState([])
 
   const [teachers, setTeachers] = useState([
-    { id: "1", name: "Rob", city: "Berlin" },
-    { id: "2", name: "Marlene", city: "Hamburg" },
-    { id: "3", name: "Olaf", city: "Hamburg" },
-    { id: "4", name: "Julian", city: "Berlin" },
+    { _id: "1", name: "Rob", city: "Berlin" },
+    { _id: "2", name: "Marlene", city: "Hamburg" },
+    { _id: "3", name: "Olaf", city: "Hamburg" },
+    { _id: "4", name: "Julian", city: "Berlin" },
   ]);
   const [newTeacher, setNewTeacher] = useState({
     name: "",
@@ -60,7 +60,7 @@ export const Teachers = () => {
   };
 
   const handleDelete = (id) => {
-    const deleteTeacher = teachers.filter((teacher) => teacher.id !== id);
+    const deleteTeacher = teachers.filter((teacher) => teacher._id !== id);
     setTeachers(deleteTeacher);
   };
 
@@ -126,7 +126,7 @@ export const Teachers = () => {
         </div>
         <div className="teachers">
           {filteredTeachers.map((teacher) => (
-            <div key={teacher.id} className="teacher">
+            <div key={teacher._id} className="teacher">
               <div className="item">{teacher.name}</div>
               <div className="item">{teacher.city}</div>
               <div className="icons">
@@ -135,7 +135,7 @@ export const Teachers = () => {
                   className="icon"
                   role="button"
                   tabIndex="0"
-                  onClick={() => handleDelete(teacher.id)}
+                  onClick={() => handleDelete(teacher._id)}
                 />
               </div>
             </div>
