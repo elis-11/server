@@ -29,7 +29,6 @@ export const Teachers = () => {
     );
   }
 
-  // RENDERING of data into HTML
   return (
     <div className="Teachers">
       <h2>Teachers</h2>
