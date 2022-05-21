@@ -1,0 +1,28 @@
+@url=http://localhost:5000
+
+### home
+GET {{url}}
+
+### books
+GET {{url}}/books
+
+###  All users
+GET {{url}}/users
+
+###  Create user
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "name": "Lana",
+    "email": "lana@gmail.com",
+    "password": "lana1"
+}  
+###  Login user
+POST {{url}}/users/login
+Content-Type: application/json
+
+{
+    "email": "iren@gmail.com",
+    "password": "iren1"
+} 

@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6283b95ad4baeaff0d4200de"
+  },
+  "title": "Name of the Wind",
+  "author": "Jadon Sanderson"
+},{
+  "_id": {
+    "$oid": "6283b95ad4baeaff0d4200df"
+  },
+  "title": "Die Verwandlung",
+  "author": "Franz Kafka"
+},{
+  "_id": {
+    "$oid": "6283b95ad4baeaff0d4200e0"
+  },
+  "title": "Das Glasperlenspiel",
+  "author": "Hermann Hesse"
+}]

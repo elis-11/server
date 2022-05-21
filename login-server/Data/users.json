@@ -1,0 +1,141 @@
+[{
+  "_id": {
+    "$oid": "6283cc62d4baeaff0d4200e4"
+  },
+  "name": "Gael",
+  "email": "gael@gmail.com",
+  "password": "gael1"
+},{
+  "_id": {
+    "$oid": "6283cc62d4baeaff0d4200e5"
+  },
+  "name": "Elisa",
+  "email": "elisa@gmail.com",
+  "password": "elisa1"
+},{
+  "_id": {
+    "$oid": "6283cc62d4baeaff0d4200e6"
+  },
+  "name": "Robert",
+  "email": "robert@gmail.com",
+  "password": "robert1"
+},{
+  "_id": {
+    "$oid": "6283feb897aebd3c409e3064"
+  },
+  "name": "John",
+  "email": "john@gmail.com",
+  "password": "john1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652817592911"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652817592911"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6284025c97aebd3c409e306a"
+  },
+  "name": "Luis",
+  "email": "luis@gmail.com",
+  "password": "luis1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652818524865"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652818524865"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6284f03a29137e898616e6fa"
+  },
+  "name": "Luis",
+  "email": "luis@luis.com",
+  "password": "luis1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652879418892"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652879418892"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6284f04029137e898616e6fc"
+  },
+  "name": "Luis",
+  "email": "luis@luis.com",
+  "password": "luis1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652879424266"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652879424266"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6284f9546a32457037019b5e"
+  },
+  "name": "Simon",
+  "email": "simon@gmail.com",
+  "password": "simon1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652881748154"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652881748154"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6284f9966a32457037019b63"
+  },
+  "name": "Iren",
+  "email": "iren@gmail.com",
+  "password": "iren1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652881814588"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652881814588"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "6284fa736a32457037019b6b"
+  },
+  "name": "Muslim",
+  "email": "muslim@gmail.com",
+  "password": "muslim1",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1652882035690"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1652882035690"
+    }
+  }
+}]
