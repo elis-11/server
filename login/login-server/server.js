@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const { connectDb } = require("./db-connect");
-const User = require("./models/User");
+ const usersRouter = require("./routes/users.router");
 
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
@@ -10,6 +10,8 @@ connectDb();
 
 const app = express();
 
+app.use(express.json())
+ 
 app.get("/", (req, res) => {
   res.send(`
     <h2>Welcome to our fullstack Book App!</h2>
@@ -20,16 +22,6 @@ app.get("/", (req, res) => {
     `);
 });
 
-app.get("/users", async (req, res) => {
-
-const usersAll= await User.find()
-
-  res.json( usersAll
-    // [ { _id: "u1", name: "Gael", email: "gael@gmail.com", password: "gael" },
-    // {_id: "u2",name: "Robert",email: "robert@gmail.com",password: "robert"},]
-  );
-});
-
 app.get("/books", (req, res) => {
   res.json([
     { _id: "b1", title: "Name of the Wind", author: "Jadon Sanderson" },
@@ -37,6 +29,8 @@ app.get("/books", (req, res) => {
     { _id: "b3", title: "Das Glasperlenspiel", author: "Hermann Hesse" },
   ]);
 });
+
+app.use("/users", usersRouter)
 
 app.use((req, res, next) => {
   res.status(404).json({ error: "This route does not exist" });

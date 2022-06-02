@@ -8,3 +8,13 @@ GET {{url}}/users
 
 ### Books
 GET {{url}}/books
+
+### User Create
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "name": "Luis",
+    "email": "luis@gmail.com",
+    "password": "luis"
+}
