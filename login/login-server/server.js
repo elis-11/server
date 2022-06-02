@@ -1,5 +1,11 @@
-import express from "express";
-// import dotenv from "dotenv"
+const dotenv = require("dotenv");
+const express = require("express");
+const { connectDb } = require("./db-connect");
+
+const env = dotenv.config();
+console.log("Loaded environment config: ", env);
+
+connectDb();
 
 const app = express();
 
@@ -16,7 +22,12 @@ app.get("/", (req, res) => {
 app.get("/users", (req, res) => {
   res.json([
     { _id: "u1", name: "Gael", email: "gael@gmail.com", password: "gael" },
-    { _id: "u2", name: "Robert", email: "robert@gmail.com", password: "robert"},
+    {
+      _id: "u2",
+      name: "Robert",
+      email: "robert@gmail.com",
+      password: "robert",
+    },
   ]);
 });
 

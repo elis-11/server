@@ -1,0 +1,10 @@
+@url= http://localhost:5000
+
+### Home
+GET {{url}}
+
+### Uers
+GET {{url}}/users
+
+### Books
+GET {{url}}/books
