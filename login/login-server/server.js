@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const { connectDb } = require("./db-connect");
+const User = require("./models/User");
 
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
@@ -19,16 +20,14 @@ app.get("/", (req, res) => {
     `);
 });
 
-app.get("/users", (req, res) => {
-  res.json([
-    { _id: "u1", name: "Gael", email: "gael@gmail.com", password: "gael" },
-    {
-      _id: "u2",
-      name: "Robert",
-      email: "robert@gmail.com",
-      password: "robert",
-    },
-  ]);
+app.get("/users", async (req, res) => {
+
+const usersAll= await User.find()
+
+  res.json( usersAll
+    // [ { _id: "u1", name: "Gael", email: "gael@gmail.com", password: "gael" },
+    // {_id: "u2",name: "Robert",email: "robert@gmail.com",password: "robert"},]
+  );
 });
 
 app.get("/books", (req, res) => {
