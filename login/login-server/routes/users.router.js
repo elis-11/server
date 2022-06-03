@@ -23,17 +23,19 @@ usersRouter.post("/", async (req, res) => {
   const userNew = await User.create(req.body);
   res.json(userNew);
 });
-
 usersRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log(req.body);
   const userFound = await User.findOne({
-    email,password
-  })
-  if(!userFound) {
-  return res.status(400).json({ error: "User does not exist! Try with other email / password."})
+    email,
+    password,
+  });
+  if (!userFound) {
+    return res
+      .status(400)
+      .json({ error: "User does not exist! Try with other email / password." });
   }
-  res.json(userFound)
+  res.json(userFound);
 });
 
 module.exports = usersRouter;
