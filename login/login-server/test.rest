@@ -14,7 +14,16 @@ POST {{url}}/users
 Content-Type: application/json
 
 {
-    "name": "Luis",
-    "email": "luis@gmail.com",
-    "password": "luis"
+    "name": "niko",
+    "email": "niko@gmail.com",
+    "password": "niko"
+}
+
+### User Login
+POST {{url}}/users/login
+Content-Type: application/json
+
+{
+"email": "niko@gmail.com",
+"password": "niko"
 }
