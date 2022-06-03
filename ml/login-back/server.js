@@ -1,9 +1,13 @@
 const dotenv = require("dotenv")
 const express= require("express");
+const { connectDb}= require("./db-connect")
 
 
 const env=dotenv.config();
 console.log("Loaded environment config: ", env);
+
+connectDb()
+
 const app = express();
 app.use(express.json())
 
