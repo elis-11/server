@@ -23,6 +23,7 @@ usersRouter.post("/", async (req, res) => {
   const userNew = await User.create(req.body);
   res.json(userNew);
 });
+
 usersRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log(req.body);
