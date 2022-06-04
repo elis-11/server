@@ -1,29 +1,29 @@
 @url= http://localhost:5000
 
-### HOME
-GET {{url}}/
+### Home
+GET {{url}}
 
-### get all users
+### Users
 GET {{url}}/users
 
-### get all books
+### Books
 GET {{url}}/books
 
-### Create User
+### create user / signup
 POST {{url}}/users
 Content-Type: application/json
 
 {
-    "name": "Robert",
-    "email": "robert@gmail.com",
-    "password": "robert"
+    "name": "Luis",
+    "email": "luis@gmail.com",
+    "password": "luis"
 }
 
-### Login User
+### login user
 POST {{url}}/users/login
 Content-Type: application/json
 
 {
-    "email": "robert@gmail.com",
-    "password": "robert"
+    "email": "luis@gmail.com",
+    "password": "luis"
 }

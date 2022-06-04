@@ -3,33 +3,37 @@ const User = require("../models/User");
 
 const usersRouter = express.Router();
 
-// GET ll users route
+// get all users
 usersRouter.get("/", async (req, res) => {
-  const allUsers = await User.find();
-  res.json(allUsers);
+  const usersAll = await User.find();
+  res.json(usersAll);
 });
 
-// POST/users - create / signup new user
-usersRouter.post("/", async (req, res)=>{
-  const { email}= req.body;
+// create new user / sign up
+usersRouter.post('/', async (req, res) => {
+    const {email} = req.body
 
-  const existingUser=await User.findOne({ email })
-  if (existingUser) return res
-  .status(400)
-  .json({error: `User with email ${email} already exists`})
+    const existingUser=await User.findOne({email})
 
-  const userNew= await User.create(req.body);
-  res.json(userNew);
+    if (existingUser)
+    return res.status(404).json({error: `User with email ${email} already exists`})
+
+    const userNew = await User.create(req.body);
+    res.json(userNew);
 })
 
-usersRouter.post("/login", async (req, res)=>{
-  const { email, password}= req.body;
-  console.log(req.body);
-  const foundUser = await User.findOne({ email, password,})
-  if (!foundUser) return res
-  .status(400)
-  .json({error: `User does not exist! Try with other email / password.`})
-  res.json(foundUser);
+// login user
+usersRouter.post('/login', async (req, res)=>{
+    const { email, password} = req.body
+    console.log(req.body);
+    const userFound=await User.findOne({email, password})
+if (!userFound){
+    return res
+    .status(400)
+    .json({error: `User does not exist`})
+}
+res.json(userFound);
 })
+
 
 module.exports = usersRouter;
