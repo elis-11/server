@@ -1,7 +1,8 @@
 const dotenv = require("dotenv");
 const express = require("express");
+const cors= require("cors")
 const { connectDb } = require("./db-connect");
- const usersRouter = require("./routes/users.router");
+const usersRouter = require("./routes/users.router");
 
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
@@ -10,6 +11,7 @@ connectDb();
 
 const app = express();
 
+app.use(cors())
 app.use(express.json())
  
 app.get("/", (req, res) => {

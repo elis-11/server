@@ -8,11 +8,12 @@ usersRouter.get("/", async (req, res) => {
   const usersAll = await User.find();
   res.json(usersAll);
 });
-
 // POST/users - create / signup new user
 usersRouter.post("/", async (req, res) => {
   const { email } = req.body;
 
+  console.log(`Signup request: `, req.body); 
+   
   const existingUser = await User.findOne({ email });
 
   if (existingUser)

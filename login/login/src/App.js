@@ -1,4 +1,6 @@
 import { NavLink, Routes, Route } from "react-router-dom";
+import { Signup } from "../src/components/Signup";
+import { Login } from "../src/components/Login";
 import "./App.css";
 
 function App() {
@@ -13,9 +15,9 @@ function App() {
         </nav>
         <h2>Manage your app</h2>
         <Routes>
-          <Route path="/" element={<div>HomePage</div>} />
-          <Route path="/signup" element={<div>SignupPage</div>} />
-          <Route path="/login" element={<div>Login</div>} />
+          <Route path="/" element={<div>Home</div>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/dashboard" element={<div>Dashboard</div>} />
         </Routes>
       </header>
