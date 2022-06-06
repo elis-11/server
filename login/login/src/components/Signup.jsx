@@ -27,8 +27,8 @@ export const Signup = () => {
       },
     });
 
-    const userLoggedIn = await response.json();
-    console.log(userLoggedIn);
+    const userNewApi = await response.json();
+    console.log(userNewApi);
   };
 
   return (

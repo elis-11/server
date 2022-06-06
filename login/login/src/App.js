@@ -2,6 +2,7 @@ import { NavLink, Routes, Route } from "react-router-dom";
 import { Signup } from "../src/components/Signup";
 import { Login } from "../src/components/Login";
 import "./App.css";
+import { Dashboard } from "./components/Dashboard";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="/" element={<div>Home</div>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/dashboard" element={<div>Dashboard</div>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          {/* <Route path="/dashboard" element={<div>Dashboard</div>} /> */}
         </Routes>
       </header>
     </div>
