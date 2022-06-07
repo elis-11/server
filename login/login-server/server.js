@@ -1,9 +1,9 @@
 const dotenv = require("dotenv");
 const express = require("express");
-const cors= require("cors")
+const cors = require("cors");
 const { connectDb } = require("./db-connect");
 const usersRouter = require("./routes/users.router");
-const session=require("express-session");
+const session = require("express-session");
 
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
@@ -11,22 +11,26 @@ console.log("Loaded environment config: ", env);
 connectDb();
 
 const app = express();
- 
-app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }))
-app.use(express.json()) 
-app.use(session({
-  secret:process.env.SESSION_SECRET,
-  proxy:true,
-  saveUninitialized:true, // saveUninitialized:true = create cookie on each request!
-  resave:false,
-  cookie:{
-    httpOnly:true,
-    maxAge: 1000*60*60*24,
-    // secure: process.env.NODE_ENV === "production",
-    // sameSite: process.env.NODE_ENV === "production" ? "none": "lax",
-  }
-}))
- 
+
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }));
+app.use(express.json());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    proxy: true,
+    saveUninitialized: false, // saveUninitialized:true = create cookie on each request!
+    resave: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24,
+      sameSite: "lax",
+      secure: false,
+      // secure: process.env.NODE_ENV === "production",
+      // sameSite: process.env.NODE_ENV === "production" ? "none": "lax",
+    },
+  })
+);
+
 app.get("/", (req, res) => {
   res.send(`
     <h2>Welcome to our fullstack Book App!</h2>
@@ -45,7 +49,7 @@ app.get("/books", (req, res) => {
   ]);
 });
 
-app.use("/users", usersRouter)
+app.use("/users", usersRouter);
 
 app.use((req, res, next) => {
   res.status(404).json({ error: "This route does not exist" });
