@@ -40,4 +40,13 @@ usersRouter.post("/login", async (req, res) => {
   res.json(userFound);
 });
 
+usersRouter.get("/logout", (req, res)=>{
+  console.log(req.session.user);  
+  req.session.destroy((err)=>{
+    res.json({
+      message: 'Logged you out siccessfully'
+    });
+  })
+})
+
 module.exports = usersRouter;
