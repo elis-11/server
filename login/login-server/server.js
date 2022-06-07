@@ -41,7 +41,21 @@ app.get("/", (req, res) => {
     `);
 });
 
-app.get("/books", (req, res) => {
+// req => requuest => cookie & session & params
+// res => for sending a response
+// next => next is used to FORQARD a user to the route user wants to access
+// if we do not call next => the user will gett stuck / rejected
+const auth = (req, res, next) => {
+console.log("SESSION:", req.session.user);
+
+  if (!req.session.user) {
+    return res.status(401).json({
+      error: "You have no right!",
+    });
+  }
+  next(); // allow user to move forward to route!
+};
+app.get("/books", auth, (req, res) => {
   res.json([
     { _id: "b1", title: "Name of the Wind", author: "Jadon Sanderson" },
     { _id: "b2", title: "Die Verwandlung", author: "Franz Kafka" },
