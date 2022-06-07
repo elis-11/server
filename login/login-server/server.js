@@ -3,6 +3,7 @@ const express = require("express");
 const cors= require("cors")
 const { connectDb } = require("./db-connect");
 const usersRouter = require("./routes/users.router");
+const session=require("express-session");
 
 const env = dotenv.config();
 console.log("Loaded environment config: ", env);
@@ -10,9 +11,21 @@ console.log("Loaded environment config: ", env);
 connectDb();
 
 const app = express();
-
-app.use(cors())
-app.use(express.json())
+ 
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }))
+app.use(express.json()) 
+app.use(session({
+  secret:process.env.SESSION_SECRET,
+  proxy:true,
+  saveUninitialized:true, // saveUninitialized:true = create cookie on each request!
+  resave:false,
+  cookie:{
+    httpOnly:true,
+    maxAge: 1000*60*60*24,
+    // secure: process.env.NODE_ENV === "production",
+    // sameSite: process.env.NODE_ENV === "production" ? "none": "lax",
+  }
+}))
  
 app.get("/", (req, res) => {
   res.send(`

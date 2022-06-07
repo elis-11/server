@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 // console.log(process.env.REACT_APP_API_URL);
 // const API_URL = "http://localhost:5000";
 const API_URL = process.env.REACT_APP_API_URL;
-
+  
 export const Login = () => {
   const [errors, setErrors] = useState("");
 
@@ -23,12 +23,14 @@ export const Login = () => {
       password: pwRef.current.value,
     };
     console.log(userLogin);
+    
     const response = await fetch(`${API_URL}/users/login`, {
       method: "POST",
       body: JSON.stringify(userLogin),
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: 'include'
     });
 
     const result = await response.json();
