@@ -8,6 +8,18 @@ usersRouter.get("/", async (req, res) => {
   const usersAll = await User.find();
   res.json(usersAll);
 });
+
+// GET /user/me
+// just one purpose => check if I am still loged in
+usersRouter.get("/me", (req, res) =>{
+  if(!req.session.user){
+    return res.status(401).json({
+      error: 'You are not logged in'
+    })
+  }
+  res.json(req.session.user);
+})
+
 // POST/users - create / signup new user
 usersRouter.post("/", async (req, res) => {
   const { email } = req.body;
@@ -32,16 +44,17 @@ usersRouter.post("/login", async (req, res) => {
     email: email,
     password,
   });
-  if (!userFound)
+  if (!userFound){
     return res
-      .status(400)
-      .json({ error: "User does not exist! Try with other email / password." });
+    .status(400)
+    .json({ error: "User does not exist! Try with other email / password." });
+  }
   req.session.user = userFound;
   res.json(userFound);
 });
 
 usersRouter.get("/logout", (req, res)=>{
-  console.log(req.session.user);  
+  console.log(req.session.user);   
   req.session.destroy((err)=>{
     res.json({
       message: 'Logged you out siccessfully'

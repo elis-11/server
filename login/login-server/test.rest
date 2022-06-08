@@ -3,11 +3,14 @@
 ### Home
 GET {{url}}
 
+### Books
+GET {{url}}/books
+
 ### Uers
 GET {{url}}/users
 
-### Books
-GET {{url}}/books
+### Me / Chek if I am still logged in and give me my user info
+GET {{url}}/users/me
 
 ### User Create
 POST {{url}}/users

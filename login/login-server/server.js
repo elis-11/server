@@ -55,6 +55,7 @@ console.log("SESSION:", req.session.user);
   }
   next(); // allow user to move forward to route!
 };
+//! 19- 53:00
 app.get("/books", auth, (req, res) => {
   res.json([
     { _id: "b1", title: "Name of the Wind", author: "Jadon Sanderson" },
