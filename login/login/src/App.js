@@ -1,7 +1,7 @@
 import { NavLink, Routes, Route } from "react-router-dom";
 import { Signup } from "../src/components/Signup";
 import { Login } from "../src/components/Login";
-import "./App.css";
+import "./App.scss";
 import { Dashboard } from "./components/Dashboard";
 
 function App() {
