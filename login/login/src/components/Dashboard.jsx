@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useDataContext } from "../context/Dataprovider";
 import { fetchBooksApi } from "../helpers/apiCalls";
 
 export const Dashboard = () => {
+
+const {user, setErrors}= useDataContext()
+
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -13,7 +17,13 @@ export const Dashboard = () => {
       }
       setBooks(result);
     };
-    fetchBooks();
+
+    if(user){
+      fetchBooks();
+    }
+    else {
+      setErrors('You arent logged in!')
+    }
   }, []);  
 
   return (
