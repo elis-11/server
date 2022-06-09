@@ -6,7 +6,7 @@
     font-weight: bold;
   }
 
-  .nav{
+  nav{
     margin: 20px;
     display: flex;
     justify-content: center;
@@ -14,11 +14,11 @@
     a {
       text-decoration: none;
       font-weight: bold;
-      color: green;
+      color: rgb(112, 117, 112);
       font-size: 20px;
     }
   }
-
+  
   .dashboard {
     margin: auto;
     width: 300px;

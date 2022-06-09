@@ -10,7 +10,7 @@ console.log(API_URL);
 
 export const Login = () => {
   // const [errors, setErrors] = useState("");
-  const {setErrors} = useDataContext()
+  const {setUser, setErrors} = useDataContext()
 
   const emailRef = useRef();
   const pwRef = useRef();
@@ -27,7 +27,7 @@ export const Login = () => {
     }
     console.log(result);
     setErrors("");
-
+    setUser(result)
     navigate("/dashboard", { replace: true });
   };
 
