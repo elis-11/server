@@ -40,7 +40,8 @@ export const logoutApi = async () => {
   return response.json();
 };
 
-export const statusApi = async () => {
+// export const  = async () => {
+export const checkAuthStatusApi = async () => {
   const response = await fetch(`${API_URL}/users/me`, {
     credentials: "include",
   });
