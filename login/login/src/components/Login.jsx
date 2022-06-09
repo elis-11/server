@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDataContext } from "../context/Dataprovider";
 import { loginApi } from "../helpers/apiCalls";
 
 // const API_URL = "http://localhost:5000";
@@ -8,7 +9,8 @@ console.log(API_URL);
 
 
 export const Login = () => {
-  const [errors, setErrors] = useState("");
+  // const [errors, setErrors] = useState("");
+  const {setErrors} = useDataContext()
 
   const emailRef = useRef();
   const pwRef = useRef();
@@ -39,9 +41,6 @@ export const Login = () => {
       </div>
       <div>
         <button type="submit">Login</button>
-      </div>
-      <div className="errors" style={{ color: "red", fontWeight: "bold" }}>
-        {errors}
       </div>
     </form>
   );
