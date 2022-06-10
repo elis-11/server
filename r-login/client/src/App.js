@@ -1,5 +1,5 @@
 import { NavLink, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   return (
@@ -7,16 +7,12 @@ function App() {
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="signup">Signup</NavLink>
           <NavLink to="login">Login</NavLink>
-          <NavLink to="dashboard">Dashboard</NavLink>
         </nav>
         <h2>Manage your app</h2>
         <Routes>
-          <Route path="/" element={<div>HomePage</div>} />
-          <Route path="/signup" element={<div>SignupPage</div>} />
+          <Route path="/" element={<div>Home</div>} />
           <Route path="/login" element={<div>Login</div>} />
-          <Route path="/dashboard" element={<div>Dashboard</div>} />
         </Routes>
       </header>
     </div>
