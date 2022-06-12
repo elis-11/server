@@ -1,8 +1,10 @@
-import dotenv from "dotenv";
 import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import {usersRouter} from "./routes/users.router.js";
+dotenv.config();
 
-const env = dotenv.config();
-console.log("Loaded environment config: ", env);
+mongoose.connect(process.env.MONGO_URI)
 
 const app = express();
 
@@ -17,6 +19,20 @@ app.get("/", (req, res) => {
   <div>Books: <a href="/books">/books</a></div>
 `);
 });
+
+app.get("/books", (req, res)=>{
+  res.json([
+    {_id: "b1", title: "Tourist", author: "DD"},
+    {_id: "b2", title: "MM", author: "TT"}
+  ])
+})
+
+app.use("/users", usersRouter)
+
+app.use((req, res, next) => {
+  res.status(404).json({error: "This route does not exist!"})
+})
+
 const PORT = 5000 || process.env.PORT;
 app.listen(PORT, ()=>{
  console.log (`App listenin at http://localhost:` + PORT);
