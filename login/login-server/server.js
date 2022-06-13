@@ -50,7 +50,7 @@ console.log("SESSION:", req.session.user);
 
   if (!req.session.user) {
     return res.status(401).json({
-      error: "[UCH] You have no right!",
+      error: "[OUCH] You have no right!",
     });
   }
   next(); // allow user to move forward to route!

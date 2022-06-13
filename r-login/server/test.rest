@@ -2,3 +2,34 @@
 
 ### Home
 GET {{url}}
+
+### Books
+GET {{url}}/books
+
+### Users
+GET {{url}}/users
+
+### Me
+GET {{url}}/users/me
+
+### Create user / Sign up
+POST {{url}}/users
+Content-Type: application/json
+
+{
+  "name":"tiana",
+  "email":"tiana@gmail.com",
+  "password": "password"
+}
+
+### Login user
+POST {{url}}/users/login
+Content-Type: application/json
+
+{
+    "email": "tiana@gmail.com",
+    "password": "password"
+}
+
+### Logout user
+GET {{url}}/users/logout

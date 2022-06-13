@@ -17,9 +17,9 @@ POST {{url}}/users
 Content-Type: application/json
 
 {
-    "name": "niko",
-    "email": "niko@gmail.com",
-    "password": "niko"
+    "name": "lisa",
+    "email": "lisa@gmail.com",
+    "password": "lisa"
 }
 
 ### User LOGIN
@@ -27,8 +27,8 @@ POST {{url}}/users/login
 Content-Type: application/json
 
 {
-"email": "niko@gmail.com",
-"password": "niko"
+"email": "lisa@gmail.com",
+"password": "lisa"
 }
 
 ### User LOGOUT
