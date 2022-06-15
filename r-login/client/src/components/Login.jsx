@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // console.log(process.env.REACT_APP_API_URL);
 const API_URL = process.env.REACT_APP_API_URL;
@@ -9,6 +10,8 @@ export const Login = () => {
   const pwRef = useRef();
 
   const [errors, setErrors] = useState("");
+
+  const navigate=useNavigate();
 
   const onLoginSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ export const Login = () => {
     }
     console.log(result);
     setErrors("")
+    navigate("/dashboard", {replace: true});
   };
 
   return (
