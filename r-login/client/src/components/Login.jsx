@@ -6,15 +6,16 @@ const API_URL = process.env.REACT_APP_API_URL;
 console.log(API_URL);
 
 export const Login = () => {
+  const [errors, setErrors] = useState("");
+
   const emailRef = useRef();
   const pwRef = useRef();
 
-  const [errors, setErrors] = useState("");
-
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const onLoginSubmit = async (e) => {
     e.preventDefault();
+    
     const userLogin = {
       email: emailRef.current.value,
       password: pwRef.current.value,
@@ -27,15 +28,16 @@ export const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include ",
     });
     const result = await response.json();
-    
+
     if (response.status !== 200) {
       return setErrors(result.error);
     }
     console.log(result);
-    setErrors("")
-    navigate("/dashboard", {replace: true});
+    setErrors("");
+    navigate("/dashboard", { replace: true });
   };
 
   return (

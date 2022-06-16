@@ -10,6 +10,7 @@ export const Signup = () => {
 
   const onSignupSubmit = async (e) => {
     e.preventDefault();
+
     const userSignup = { 
       name: nameRef.current.value,
       email: emailRef.current.value,
@@ -22,7 +23,8 @@ export const Signup = () => {
       body: JSON.stringify(userSignup),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      // credentials: 'include'
     });
     const userNewApi= await response.json();
     console.log(userNewApi);

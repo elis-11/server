@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(cors({origin: process.env.FRONTEND_ORIGIN, credentials: true}))
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }));
 app.use(express.json());
 app.use(
   session({
@@ -21,15 +21,13 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
-      // sameSite: "lax",
-      // secure: false,
-      secure: process.env.NODE_ENV !== "production",
-      sameSite: process.env.NODE_ENV !== "production" ? "none" : "lax",
+      sameSite: "lax",
+      secure: false,
+      // secure: process.env.NODE_ENV !== "production",
+      // sameSite: process.env.NODE_ENV !== "production" ? "none" : "lax",
     },
   })
 );
-
-
 
 app.get("/", (req, res) => {
   res.send(`
@@ -38,23 +36,29 @@ app.get("/", (req, res) => {
   <div>Home: <a href="/">/</a></div>
   <div>Users: <a href="/users">/users</a></div>
   <div>Books: <a href="/books">/books</a></div>
-`);
+ `);
 });
 
-const auth=(req, res, next) => {
+// Türsteher => sequrity guard
+
+// req => request => cookie & session & params
+// res => for sending a response
+// next => use to forward a user to the route people ants to access
+// if dont call next => the user will get stuck / rejected
+const auth = (req, res, next) => {
   console.log(`SESSION:`, req.session.user);
   if (!req.session.user) {
     return res.status(401).json({
-      error: `You have no right!`
-    })
+      error: `Dios mio :) You have no right!`,
+    });
   }
-  next()
-}
+  next(); // => allow user to move forward to route!
+};
 
-app.get("/books", (req, res) => {
+app.get("/books", auth, (req, res) => {
   res.json([
     { _id: "b1", title: "Tourist", author: "DD" },
-    { _id: "b2", title: "MM", author: "TT" },
+    { _id: "b2", title: "Gladiator", author: "TT" },
   ]);
 });
 

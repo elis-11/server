@@ -3,20 +3,20 @@ import { User } from "../models/User.js";
 
 export const usersRouter = express.Router();
 
-// Get all users route
+// Get all users
 usersRouter.get("/", async (req, res) => {
   const usersAll = await User.find();
   res.json(usersAll);
 });
 
-usersRouter.get("/me", (req, res)=>{
+usersRouter.get("/me", (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({
-      error: `You are not logged in.`
-    })
+      error: `You are not logged in.`,
+    });
   }
   res.json(req.session.user);
-})
+});
 
 // Post / create users / signup new user
 usersRouter.post("/", async (req, res) => {
@@ -38,7 +38,6 @@ usersRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log(req.body);
   const userFound = await User.findOne({
-    // email: email,
     email,
     password,
   });
@@ -50,9 +49,8 @@ usersRouter.post("/login", async (req, res) => {
   req.session.user = userFound;
   res.json(userFound);
 });
-
-usersRouter.get("/logout", (req, res) => {
-  console.log(req.session.user);
+  usersRouter.get("/logout", (req, res) => {
+  console.log(req.session.user)
   req.session.destroy((err) => {
     res.clearCookie("connect.sid");
 
@@ -61,5 +59,3 @@ usersRouter.get("/logout", (req, res) => {
     });
   });
 });
-
-// export default usersRouter
