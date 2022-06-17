@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginApi } from "./helpers/apiCalls";
 
 // console.log(process.env.REACT_APP_API_URL);
-const API_URL = process.env.REACT_APP_API_URL;
-console.log(API_URL);
+// const API_URL = process.env.REACT_APP_API_URL;
+// console.log(API_URL);
 
 export const Login = () => {
   const [errors, setErrors] = useState("");
@@ -15,24 +16,12 @@ export const Login = () => {
 
   const onLoginSubmit = async (e) => {
     e.preventDefault();
-    
-    const userLogin = {
-      email: emailRef.current.value,
-      password: pwRef.current.value,
-    };
-    console.log(userLogin);
 
-    const response = await fetch(`${API_URL}/users/login`, {
-      method: "POST",
-      body: JSON.stringify(userLogin),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include ",
-    });
-    const result = await response.json();
-
-    if (response.status !== 200) {
+    const result = await loginApi(
+      emailRef.current.value,
+      pwRef.current.value
+    );
+    if (result.error) {
       return setErrors(result.error);
     }
     console.log(result);

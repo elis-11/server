@@ -1,7 +1,27 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import { fetchBooksApi } from "./helpers/apiCalls";
 
 export const Dashboard = () => {
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const result = await fetchBooksApi();
+      if (result.error) {
+        return console.log("[OUCH]", result.error);
+      }
+      setBooks(result);
+    };
+    fetchBooks();
+  }, []);
+
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div className="dashboard">
+      {books.map((book) => (
+        <div key={book._id}>
+          <div>{book.title}</div>
+          <div>{book.author}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
