@@ -1,8 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-const DataContext = createContext();
+export const DataContext = createContext();
 
-export const Dataprovider = ({ children }) => {
+export const useDataContext = () => {
+  return useContext(DataContext);
+};
+
+export const DataProvider = ({ children }) => {
   const [user, setUser] = useState();
 
   const sharedData = {

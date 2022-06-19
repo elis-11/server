@@ -1,17 +1,23 @@
 import { NavLink } from "react-router-dom";
+import { useDataContext } from "../context/DataProvider";
 
 export const Navbar = () => {
+  const { user } = useDataContext();
 
-const handleLogout=(e) => {
-e.preventDefault();
-}
+  const handleLogout = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
       <NavLink to="signup">Signup</NavLink>
-      <NavLink to="login">Login</NavLink>
-      <NavLink onClick={handleLogout} to="#">Logout</NavLink>
+      {!user && <NavLink to="login">Login</NavLink>}
+      {user && (
+        <NavLink onClick={handleLogout} to="#">
+          Logout
+        </NavLink>
+      )}
       <NavLink to="dashboard">Dashboard</NavLink>
     </nav>
   );
