@@ -1,6 +1,11 @@
 .App {
   text-align: center;
 
+  .errors {
+    color: red;
+    font-weight: bold;
+  }
+
   nav {
     margin: auto;
     padding-top: 20px;

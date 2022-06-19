@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDataContext } from "../context/DataProvider";
 import { loginApi } from "./helpers/apiCalls";
 
 // console.log(process.env.REACT_APP_API_URL);
@@ -7,7 +8,7 @@ import { loginApi } from "./helpers/apiCalls";
 // console.log(API_URL);
 
 export const Login = () => {
-  const [errors, setErrors] = useState("");
+  const { setErrors } = useDataContext();
 
   const emailRef = useRef();
   const pwRef = useRef();
@@ -17,10 +18,7 @@ export const Login = () => {
   const onLoginSubmit = async (e) => {
     e.preventDefault();
 
-    const result = await loginApi(
-      emailRef.current.value,
-      pwRef.current.value
-    );
+    const result = await loginApi(emailRef.current.value, pwRef.current.value);
     if (result.error) {
       return setErrors(result.error);
     }
@@ -39,9 +37,6 @@ export const Login = () => {
       </div>
       <div>
         <button type="submit">Login</button>
-      </div>
-      <div className="errors" style={{ color: "red", fontWeight: "bold" }}>
-        {errors}
       </div>
     </form>
   );
