@@ -4,7 +4,7 @@ import { fetchBooksApi } from "./helpers/apiCalls";
 
 export const Dashboard = () => {
   // const [books, setBooks] = useState([]);
-  const { books, setBooks, setErrors, user } = useDataContext();
+  const { books, setBooks, user } = useDataContext();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -16,10 +16,11 @@ export const Dashboard = () => {
     };
     if(user){
       fetchBooks();
-    } else {
-      setErrors(`You are not logged in!`)
-    }
-  }, []);
+    } 
+    // else {
+    //   setErrors(`You are not logged in!`)
+    // }
+  }, [user]);
 
   return (
     <div className="dashboard">
