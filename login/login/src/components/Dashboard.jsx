@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDataContext } from "../context/Dataprovider";
+import { useDataContext } from "../context/DataProvider";
 import { fetchBooksApi } from "../helpers/apiCalls";
 
 export const Dashboard = () => {

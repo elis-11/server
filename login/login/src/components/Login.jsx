@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDataContext } from "../context/Dataprovider";
+import { useDataContext } from "../context/DataProvider";
 import { loginApi } from "../helpers/apiCalls";
 
 // const API_URL = "http://localhost:5000";

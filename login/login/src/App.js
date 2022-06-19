@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { useDataContext } from "./context/Dataprovider";
+import { useDataContext } from "./context/DataProvider";
 import { Signup } from "../src/components/Signup";
 import { Login } from "../src/components/Login";
 import { Dashboard } from "./components/Dashboard";
