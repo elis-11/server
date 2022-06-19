@@ -53,7 +53,7 @@ usersRouter.post("/login", async (req, res) => {
   usersRouter.get("/logout", (req, res) => {
   // console.log(req.session.user)
   req.session.destroy((err) => {
-    // res.clearCookie("connect.sid");
+    res.clearCookie("connect.sid"); 
 
     res.json({
       message: `Logged you out successfully`,

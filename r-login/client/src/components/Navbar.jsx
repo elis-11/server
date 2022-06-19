@@ -10,10 +10,10 @@ export const Navbar = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     setUser(); // clear User from state
-logoutApi()
+    logoutApi();
     navigate("/login");
   };
-
+  
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
@@ -29,4 +29,3 @@ logoutApi()
     </nav>
   );
 };
- 

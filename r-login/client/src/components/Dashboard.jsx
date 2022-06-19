@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useDataContext } from "../context/DataProvider";
 import { fetchBooksApi } from "./helpers/apiCalls";
@@ -14,9 +15,9 @@ export const Dashboard = () => {
       }
       setBooks(result);
     };
-    if(user){
+    if (user) {
       fetchBooks();
-    } 
+    }
     // else {
     //   setErrors(`You are not logged in!`)
     // }
@@ -25,12 +26,12 @@ export const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="books">
-      {books.map((book) => (
-        <div className="book" key={book._id}>
-          <div>{book.title}</div>
-          <div>{book.author}</div>
-        </div>
-      ))}
+        {books.map((book) => (
+          <div className="book" key={book._id}>
+            <div>{book.title}</div>
+            <div>{book.author}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

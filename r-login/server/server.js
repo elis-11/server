@@ -21,10 +21,10 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
-      sameSite: "lax",
-      secure: false,
-      // secure: process.env.NODE_ENV !== "production",
-      // sameSite: process.env.NODE_ENV !== "production" ? "none" : "lax",
+      // sameSite: "lax",
+      // secure: false,
+      secure: process.env.NODE_ENV !== "production",
+      sameSite: process.env.NODE_ENV !== "production" ? "none" : "lax",
     },
   })
 );
