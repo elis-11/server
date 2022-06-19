@@ -1,11 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataProvider";
 
 export const Navbar = () => {
-  const { user } = useDataContext();
+  const { user, setUser } = useDataContext();
+
+  const navigate = useNavigate();
 
   const handleLogout = (e) => {
     e.preventDefault();
+    setUser(); // clear User from state
+    navigate("/login");
   };
 
   return (
@@ -19,6 +23,7 @@ export const Navbar = () => {
         </NavLink>
       )}
       <NavLink to="dashboard">Dashboard</NavLink>
+      {user && <span>{user.email}</span>}
     </nav>
   );
 };

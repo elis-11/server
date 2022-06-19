@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef  } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataProvider";
 import { loginApi } from "./helpers/apiCalls";
@@ -8,7 +8,7 @@ import { loginApi } from "./helpers/apiCalls";
 // console.log(API_URL);
 
 export const Login = () => {
-  const { setErrors } = useDataContext();
+  const { setUser, setErrors } = useDataContext();
 
   const emailRef = useRef();
   const pwRef = useRef();
@@ -19,12 +19,13 @@ export const Login = () => {
     e.preventDefault();
 
     const result = await loginApi(emailRef.current.value, pwRef.current.value);
-    if (result.error) {
+    if (result.error) { // nicht gekllappt- setze Error
       return setErrors(result.error);
     }
     console.log(result);
-    setErrors("");
-    navigate("/dashboard", { replace: true });
+    setErrors("");  // wenn gekllappt- cleare Error ->
+    setUser(result)
+    navigate("/dashboard", { replace: true }); // und navigiere danach zu Dashboard
   };
 
   return (

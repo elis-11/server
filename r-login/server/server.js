@@ -57,8 +57,8 @@ const auth = (req, res, next) => {
 
 app.get("/books", auth, (req, res) => {
   res.json([
-    { _id: "b1", title: "Tourist", author: "DD" },
-    { _id: "b2", title: "Gladiator", author: "TT" },
+    { _id: "b1", title: "Tourist", author: "Gael" },
+    { _id: "b2", title: "Gladiator", author: "Gael" },
   ]);
 });
 

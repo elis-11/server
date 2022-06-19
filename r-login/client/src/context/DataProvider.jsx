@@ -10,10 +10,13 @@ export const DataProvider = ({ children }) => {
   const [user, setUser] = useState();
   // const [user, setUser] = useState({ email: "luisa@gmail.com" });
   const [errors, setErrors] = useState("");
+  const [books, setBooks] = useState([]);
+
 
   const sharedData = {
     user, setUser,
     errors, setErrors,
+    books, setBooks,
   }; 
 
   return (

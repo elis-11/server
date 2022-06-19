@@ -15,6 +15,8 @@ function App() {
         <h2>Manage your app</h2>
         <div className="errors">{errors}</div >
         <Navbar />
+      </header>
+      <main>
         <Routes>
           <Route path="/" element={<div>Home</div>} />
           <Route path="/signup" element={<Signup />} />
@@ -22,7 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="/dashboard" element={<div>Dashboard</div>} /> */}
         </Routes>
-      </header>
+      </main>
     </div>
   );
 }
