@@ -1,0 +1,38 @@
+@url = http://localhost:5000
+
+### All teachers
+GET {{url}}/teachers
+Content-Type: application/json
+
+### single teachers
+GET {{url}}/teachers/6273d52efe9a75d14804800f
+Content-Type: application/json
+
+### Create
+POST {{url}}/teachers
+Content-Type: application/json
+
+{
+    "name": "Heba",
+    "city": "Hamburg"
+}
+
+### Edit
+PATCH {{url}}/teachers/62762c4eb151d0d2f86220eb
+content-type: application/json
+
+{
+    "name": "Rob"
+}
+
+### Edit
+PATCH {{url}}/teachers/6273d52efe9a75d14804800f
+content-type: application/json
+
+{
+    "city": "Bremen"
+}
+
+### Delete
+DELETE {{url}}/teachers/62762c1cb151d0d2f86220d6
+content-type: application/json
