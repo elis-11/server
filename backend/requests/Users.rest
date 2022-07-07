@@ -1,4 +1,4 @@
-@url=http://localhost:5001
+@url=http://localhost:5000
 
 ### get all users
 GET {{url}}/users
